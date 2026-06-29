@@ -127,3 +127,12 @@ Source: 10,000-row European retail banking customer dataset (`Year, CustomerId, 
 - ✅ Interactive Streamlit dashboard (`dashboard/`)
 - ✅ Research paper with findings and recommendations (`reports/European_Bank_Churn_Research_Paper.docx`)
 - ⬜ Executive summary for stakeholders
+
+---
+
+## 👨‍💻 Author
+
+**Srijan Ranjan**
+
+B.Tech Computer Science Engineering
+GITAM University
