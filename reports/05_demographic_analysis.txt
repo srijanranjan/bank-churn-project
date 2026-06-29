@@ -1,0 +1,43 @@
+======================================================================
+GENDER-BASED CHURN DIFFERENCES
+======================================================================
+Gender        Size  Churned   Rate %  Contrib %
+Female        4543     1139    25.07      55.92
+Male          5457      898    16.46      44.08
+
+======================================================================
+GEOGRAPHY x AGE GROUP INTERACTION
+======================================================================
+Geography  AgeGroup      Size  Churned   Rate %  Note
+France     46-60          749      343    45.79  
+France     60+            231       46    19.91  
+France     30-45         3168      376    11.87  
+France     <30            866       45      5.2  
+Germany    46-60          502      338    67.33  
+Germany    60+            113       44    38.94  
+Germany    30-45         1522      385     25.3  
+Germany    <30            372       47    12.63  
+Spain      46-60          396      161    40.66  
+Spain      60+            120       25    20.83  
+Spain      30-45         1558      195    12.52  
+Spain      <30            403       32     7.94  
+
+Interpretation note: compare the 46-60 row across all three countries
+to see whether age-driven churn risk is uniform or geography-amplified.
+
+======================================================================
+FINANCIAL STABILITY (CreditScoreBand x BalanceSegment) vs CHURN
+======================================================================
+CreditBand   BalanceSeg        Size  Churned   Rate %  Note
+High         High-balance       986      230    23.33  
+High         Low-balance       1013      240    23.69  
+High         Zero-balance      1117      149    13.34  
+Low          High-balance       763      192    25.16  
+Low          Low-balance        725      203     28.0  
+Low          Zero-balance       874      125     14.3  
+Medium       High-balance      1442      349     24.2  
+Medium       Low-balance       1454      323    22.21  
+Medium       Zero-balance      1626      226     13.9  
+
+Interpretation note: if 'financial stability' protected against churn, we'd
+expect High credit + High/Zero balance cells to show the LOWEST churn rates.

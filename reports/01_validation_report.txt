@@ -1,0 +1,26 @@
+[PASS] All expected columns present.
+[INFO] Extra columns not in brief schema (kept as-is): ['Year']
+[PASS] All columns have the expected dtype (no silent string coercion).
+[INFO] Shape: 10000 rows x 14 columns
+[PASS] No null values in any column.
+[PASS] No duplicate rows.
+[PASS] CustomerId is unique (no duplicate IDs).
+[PASS] 'HasCrCard' is strictly binary (0/1).
+[PASS] 'IsActiveMember' is strictly binary (0/1).
+[PASS] 'Exited' is strictly binary (0/1).
+[INFO] Overall churn rate (Exited=1): 20.37%
+[PASS] Exited label is fully populated.
+[PASS] Geography values match expected set {'Germany', 'France', 'Spain'}.
+[PASS] Gender values match expected set {'Male', 'Female'}.
+[PASS] NumOfProducts within expected range (1-4).
+[PASS] 'Age' within plausible range (18–100).
+[PASS] 'CreditScore' within plausible range (300–850).
+[PASS] 'Tenure' within plausible range (0–15).
+[PASS] 'Balance' within plausible range (0–None).
+[PASS] 'EstimatedSalary' within plausible range (0–None).
+[INFO] 1247 inactive members (12.5%) hold balances in the top quartile — worth investigating as a churn-risk segment.
+[INFO] 2521 customers (25.2%) hold only 1 product AND are inactive — classic disengagement profile.
+[INFO] 'CreditScore': 15 statistical outliers (0.1%) outside IQR fences [383.0, 919.0].
+[INFO] 'Age': 359 statistical outliers (3.6%) outside IQR fences [14.0, 62.0].
+[INFO] 'Balance': 0 statistical outliers (0.0%) outside IQR fences [-191466.4, 319110.6].
+[INFO] 'EstimatedSalary': 0 statistical outliers (0.0%) outside IQR fences [-96577.1, 296967.5].

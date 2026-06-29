@@ -1,0 +1,28 @@
+Rows after cleaning: 10000
+Columns: ['Year', 'CustomerId', 'CreditScore', 'Geography', 'Gender', 'Age', 'Tenure', 'Balance', 'NumOfProducts', 'HasCrCard', 'IsActiveMember', 'EstimatedSalary', 'Exited', 'AgeGroup', 'CreditScoreBand', 'TenureGroup', 'BalanceSegment']
+
+--- AgeGroup distribution ---
+  <30: 1641 customers (16.4%)
+  30-45: 6248 customers (62.5%)
+  46-60: 1647 customers (16.5%)
+  60+: 464 customers (4.6%)
+
+--- CreditScoreBand distribution ---
+  Low: 2362 customers (23.6%)
+  Medium: 4522 customers (45.2%)
+  High: 3116 customers (31.2%)
+
+--- TenureGroup distribution ---
+  New: 2496 customers (25.0%)
+  Mid-term: 3977 customers (39.8%)
+  Long-term: 3527 customers (35.3%)
+
+--- BalanceSegment distribution ---
+  Zero-balance: 3617 customers (36.2%)
+  Low-balance: 3192 customers (31.9%)
+  High-balance: 3191 customers (31.9%)
+
+--- Geography distribution ---
+  France: 5014 customers (50.1%)
+  Germany: 2509 customers (25.1%)
+  Spain: 2477 customers (24.8%)

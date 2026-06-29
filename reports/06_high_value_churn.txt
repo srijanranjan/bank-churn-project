@@ -1,0 +1,49 @@
+======================================================================
+HIGH-VALUE CUSTOMER CHURN RATIO (by BalanceSegment)
+======================================================================
+Segment           Size  Churned   Rate %     Balance Lost
+High-balance      3191      771    24.16   110,803,595.70
+Low-balance       3192      766     24.0    74,784,498.93
+Zero-balance      3617      500    13.82             0.00
+
+======================================================================
+SALARY vs BALANCE CHURN PATTERN
+======================================================================
+BalanceSeg     SalaryBand            Size  Churned   Rate %
+High-balance   Above-avg salary      1606      383    23.85
+High-balance   Below-avg salary      1585      388    24.48
+Low-balance    Above-avg salary      1623      405    24.95
+Low-balance    Below-avg salary      1569      361    23.01
+Zero-balance   Above-avg salary      1778      254    14.29
+Zero-balance   Below-avg salary      1839      246    13.38
+
+Interpretation note: if salary band barely changes churn rate within a
+given balance segment, that confirms BALANCE (not income) drives churn risk.
+
+======================================================================
+REVENUE RISK QUANTIFICATION
+======================================================================
+Total customers:              10,000
+Total churned customers:      2,037 (20.37% of base)
+Total balance (whole bank):   764,858,892.88
+Balance held by churners:     185,588,094.63 (24.26% of total balance)
+Disproportion ratio:          1.19x (churners hold 1.19x the balance share their headcount share would predict)
+
+======================================================================
+GERMANY: CHURN BY BALANCE SEGMENT (follow-up to geography-age finding)
+======================================================================
+BalanceSeg        Size  Churned   Rate %     Balance Lost
+Low-balance       1261      420    33.31    44,226,939.39
+High-balance      1248      394    31.57    53,746,976.14
+
+Interpretation note: compare these rates to the bank-wide BalanceSegment
+rates above -- if Germany's rate is elevated across ALL balance segments,
+the country-level effect is broad, not concentrated in one value tier.
+
+IMPORTANT: Germany has ZERO customers in the 'Zero-balance' segment -- every
+German customer in this dataset carries an account balance. Since Zero-balance
+customers churn least bank-wide (13.82%), Germany's customer base is structurally
+weighted toward the higher-churn balance tiers. This explains PART of Germany's
+elevated overall churn rate, but Germany's Low/High-balance rates (33.3% / 31.6%)
+are still well above the bank-wide Low/High-balance rates (24.0% / 24.2%), so a
+genuine country-level effect remains on top of this structural difference.

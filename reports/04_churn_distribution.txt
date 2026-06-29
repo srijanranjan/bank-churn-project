@@ -1,0 +1,62 @@
+======================================================================
+OVERALL CHURN RATE
+======================================================================
+Total customers: 10000
+Total churned:   2037
+Churn rate:      20.37%
+
+======================================================================
+SEGMENT-WISE CHURN: Geography
+======================================================================
+Segment            Size  Churned   Rate %  Contrib %  Note
+Germany            2509      814    32.44      39.96  
+Spain              2477      413    16.67      20.27  
+France             5014      810    16.15      39.76  
+
+======================================================================
+SEGMENT-WISE CHURN: AgeGroup
+======================================================================
+Segment            Size  Churned   Rate %  Contrib %  Note
+46-60              1647      842    51.12      41.34  
+60+                 464      115    24.78       5.65  SMALL SAMPLE
+30-45              6248      956     15.3      46.93  
+<30                1641      124     7.56       6.09  
+
+======================================================================
+SEGMENT-WISE CHURN: CreditScoreBand
+======================================================================
+Segment            Size  Churned   Rate %  Contrib %  Note
+Low                2362      520    22.02      25.53  
+High               3116      619    19.87      30.39  
+Medium             4522      898    19.86      44.08  
+
+======================================================================
+SEGMENT-WISE CHURN: TenureGroup
+======================================================================
+Segment            Size  Churned   Rate %  Contrib %  Note
+New                2496      528    21.15      25.92  
+Mid-term           3977      821    20.64       40.3  
+Long-term          3527      688    19.51      33.78  
+
+======================================================================
+SEGMENT-WISE CHURN: BalanceSegment
+======================================================================
+Segment            Size  Churned   Rate %  Contrib %  Note
+High-balance       3191      771    24.16      37.85  
+Low-balance        3192      766     24.0       37.6  
+Zero-balance       3617      500    13.82      24.55  
+
+======================================================================
+CHURNED VS RETAINED PROFILE COMPARISON
+======================================================================
+customer_status  customer_count  avg_age  avg_credit_score  avg_tenure  avg_balance  avg_num_products  pct_active_member  pct_has_cr_card  avg_estimated_salary
+        Churned            2037     44.8             645.4         4.9     91108.54              1.48               36.1             69.9             101465.68
+       Retained            7963     37.4             651.9         5.0     72745.30              1.54               55.5             70.7              99738.39
+
+======================================================================
+READING NOTES
+======================================================================
+- 'Rate %' = % of customers WITHIN that segment who churned (segment risk).
+- 'Contrib %' = % of ALL churners that come FROM that segment (business impact).
+  A segment can have a high rate but low contribution if it's small, or vice versa.
+- 'SMALL SAMPLE' flags segments under 500 customers -- treat their churn rate with caution.
