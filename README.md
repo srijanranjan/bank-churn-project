@@ -12,11 +12,11 @@ This project analyzes churn behavior across retail banking customers from France
 - **Account balance — not credit score or salary — predicts churn.** Within every balance segment, churn rate barely moves with credit score or income. Zero-balance customers churn least (13.82%); Low/High-balance customers churn at ~24% regardless of how creditworthy or well-paid they are.
 - **Churn is concentrated among higher-value customers.** Churned customers hold a higher average balance than retained customers (€91,109 vs. €72,745), and represent 24.26% of total balance despite being 20.37% of customers — roughly €185.6M of revenue exposure.
 
-Full methodology, tables, and recommendations are in the [research paper](reports/European_Bank_Churn_Research_Paper.docx).
+Full methodology, tables, and recommendations are in the [research paper](https://drive.google.com/file/d/1MAOAE_ZC3_TDu4UFWEGvZHHSX8GGXWsN/view?usp=drive_link).
 
 ## Live Dashboard
 
-🔗 **[View the live dashboard](https://your-app-name.streamlit.app)** *(replace with your actual Streamlit Community Cloud URL after deploying)*
+🔗 **[View the live dashboard](https://bank-churn-project-srijan-p2.streamlit.app/)** *(replace with your actual Streamlit Community Cloud URL after deploying)*
 
 ## Screenshots
 
