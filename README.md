@@ -14,6 +14,21 @@ This project analyzes churn behavior across retail banking customers from France
 
 Full methodology, tables, and recommendations are in the [research paper](reports/European_Bank_Churn_Research_Paper.docx).
 
+## Live Dashboard
+
+🔗 **[View the live dashboard](https://your-app-name.streamlit.app)** *(replace with your actual Streamlit Community Cloud URL after deploying)*
+
+## Screenshots
+
+**Overall KPIs**
+![Dashboard home page showing total customers, churn count, average balance, and balance at risk](assets/screenshots/dashboard_home_kpis.png)
+
+**Churn Split & Geography**
+![Donut chart of overall churn split alongside a bar chart of churn rate by geography, highlighting Germany at 32.44%](assets/screenshots/dashboard_churn_split_geography.png)
+
+**Segment Overview**
+![Four bar charts comparing churn rate across Age Group, Credit Score Band, Tenure Group, and Balance Segment](assets/screenshots/dashboard_segment_overview.png)
+
 ## Tech Stack
 
 - **Python** (pandas) — data validation, cleaning, segmentation
@@ -25,6 +40,8 @@ Full methodology, tables, and recommendations are in the [research paper](report
 
 ```
 bank-churn-project/
+├── assets/
+│   └── screenshots/                  # Dashboard screenshots used in this README
 ├── data/
 │   ├── raw/                          # Original, untouched source CSV
 │   └── processed/                    # Validated, segmented data + SQLite DB

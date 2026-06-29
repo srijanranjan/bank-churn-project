@@ -1,21 +1,26 @@
 import sqlite3
+import subprocess
+import sys
 import pandas as pd
 import streamlit as st
 from pathlib import Path
 
-DB_PATH = Path(__file__).parent.parent / "data" / "processed" / "bank_churn.db"
+PROJECT_ROOT = Path(__file__).parent.parent
+DB_PATH = PROJECT_ROOT / "data" / "processed" / "bank_churn.db"
+SCRIPTS_DIR = PROJECT_ROOT / "scripts"
 
-# Consistent ordering for categorical segments so charts don't randomly
-# reorder bars/axes between pages.
+BUILD_STAGES = [
+    "01_ingest_validate.py",
+    "02_clean_segment.py",
+    "03_load_to_sqlite.py",
+]
+
 AGE_ORDER = ["<30", "30-45", "46-60", "60+"]
 CREDIT_ORDER = ["Low", "Medium", "High"]
 TENURE_ORDER = ["New", "Mid-term", "Long-term"]
 BALANCE_ORDER = ["Zero-balance", "Low-balance", "High-balance"]
 GEOGRAPHY_ORDER = ["France", "Germany", "Spain"]
 
-# A small, deliberate banking-appropriate palette: deep navy as the base
-# (trust, stability), a warm amber for "churned/at-risk" so it reads as a
-# warning without being alarmist red, and a muted teal for "retained".
 COLOR_CHURNED = "#C9722D"     # warm amber/rust -- "at risk"
 COLOR_RETAINED = "#2A6F77"    # muted teal -- "stable"
 COLOR_NEUTRAL = "#1F3A5F"     # deep navy -- neutral/base bars
@@ -24,10 +29,38 @@ COLOR_ACCENT = "#8A8D91"      # grey -- secondary/context bars
 GEOGRAPHY_COLORS = {"France": "#1F3A5F", "Germany": "#C9722D", "Spain": "#5B8A72"}
 
 
+def build_database_if_missing() -> None:
+
+    if DB_PATH.exists():
+        return
+
+    raw_csv = PROJECT_ROOT / "data" / "raw" / "European_Bank.csv"
+    if not raw_csv.exists():
+        st.error(
+            f"Raw data file not found at {raw_csv}. This file must be committed "
+            f"to the repository for the app to build its database on first run."
+        )
+        st.stop()
+
+    with st.spinner("First-time setup: building database from raw data..."):
+        for stage in BUILD_STAGES:
+            script_path = SCRIPTS_DIR / stage
+            result = subprocess.run(
+                [sys.executable, str(script_path)],
+                cwd=str(PROJECT_ROOT),
+                capture_output=True,
+                text=True,
+            )
+            if result.returncode != 0:
+                st.error(f"Setup failed while running {stage}:\n\n{result.stderr}")
+                st.stop()
+
+
 @st.cache_data
 def load_customers() -> pd.DataFrame:
-    """Load the full customers table. Cached so every page doesn't re-hit
-    the database on every interaction/filter change."""
+
+    build_database_if_missing()
+
     if not DB_PATH.exists():
         st.error(
             f"Database not found at {DB_PATH}. "
@@ -38,7 +71,7 @@ def load_customers() -> pd.DataFrame:
     df = pd.read_sql_query("SELECT * FROM customers", conn)
     conn.close()
 
-    # Re-apply categorical ordering (SQLite doesn't preserve pandas Categorical order)
+    
     df["AgeGroup"] = pd.Categorical(df["AgeGroup"], categories=AGE_ORDER, ordered=True)
     df["CreditScoreBand"] = pd.Categorical(df["CreditScoreBand"], categories=CREDIT_ORDER, ordered=True)
     df["TenureGroup"] = pd.Categorical(df["TenureGroup"], categories=TENURE_ORDER, ordered=True)
@@ -86,8 +119,7 @@ def render_sidebar_filters(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def kpi_row(df: pd.DataFrame) -> None:
-    """Renders a standard row of top-line KPIs. Used at the top of most
-    pages so users always see the headline numbers before drilling down."""
+
     total = len(df)
     churned = int(df["Exited"].sum())
     churn_rate = round(100 * churned / total, 2) if total else 0
